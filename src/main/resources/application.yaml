@@ -1,3 +1,7 @@
 spring:
   application:
     name: Java_Skill_Project
+
+fitness:
+  max-quality: 5
+  min-quality: 0
