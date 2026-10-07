@@ -14,8 +14,8 @@ Content-Type: application/json
   },
   "qualityIndex": 3,
   "fitnessOpeningHours": {
-    "opensAt": "08:00:00",
-    "closesAt": "22:00:00"
+    "openingTime": "08:00:00",
+    "closingTime": "22:00:00"
   }
 }
 ###
