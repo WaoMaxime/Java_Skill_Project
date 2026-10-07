@@ -1,0 +1,98 @@
+@fitnessId = 550e8400-e29b-41d4-a716-446655440000
+
+### Create fitness
+POST http://localhost:8080/api/v1/fitness
+Content-Type: application/json
+
+{
+  "name": "Basic Fit Antwerp",
+  "address": {
+    "street": "Meir",
+    "houseNumber": "10",
+    "postalCode": "2000",
+    "city": "Antwerpen"
+  },
+  "qualityIndex": 3,
+  "fitnessOpeningHours": {
+    "opensAt": "08:00:00",
+    "closesAt": "22:00:00"
+  }
+}
+###
+
+### Get fitness by id
+GET http://localhost:8080/api/v1/fitness/{{fitnessId}}
+
+###
+
+### Get all fitness locations
+GET http://localhost:8080/api/v1/fitness
+
+###
+
+### Patch fitness name
+PATCH http://localhost:8080/api/v1/fitness/{{fitnessId}}
+Content-Type: application/json
+
+{
+  "name": "Basic Fit Antwerpen Centrum"
+}
+
+###
+
+### Patch fitness address
+PATCH http://localhost:8080/api/v1/fitness/{{fitnessId}}
+Content-Type: application/json
+
+{
+  "address": {
+    "street": "De Keyserlei",
+    "houseNumber": "15",
+    "postalCode": "2018",
+    "city": "Antwerpen"
+  }
+}
+
+###
+
+### Increase quality
+PATCH http://localhost:8080/api/v1/fitness/{{fitnessId}}
+Content-Type: application/json
+
+{
+  "qualityIndex": "INCREASE"
+}
+
+###
+
+### Decrease quality
+PATCH http://localhost:8080/api/v1/fitness/{{fitnessId}}
+Content-Type: application/json
+
+{
+  "qualityIndex": "DECREASE"
+}
+
+###
+
+### Patch multiple properties
+PATCH http://localhost:8080/api/v1/fitness/{{fitnessId}}
+Content-Type: application/json
+
+{
+  "name": "Basic Fit Antwerp Premium",
+  "address": {
+    "street": "Meir",
+    "houseNumber": "25",
+    "postalCode": "2000",
+    "city": "Antwerpen"
+  },
+  "qualityIndex": "INCREASE"
+}
+
+###
+
+### Delete fitness
+DELETE http://localhost:8080/api/v1/fitness/{{fitnessId}}
+
+###

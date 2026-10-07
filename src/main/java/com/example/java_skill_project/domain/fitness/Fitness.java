@@ -19,8 +19,23 @@ public class Fitness {
     private String name;
     private Address address;
     private int qualityIndex;
-    private FitnessOpeningHours openingTime;
-    private final FitnessProperties properties;
+    private FitnessOpeningHours fitnessOpeningHours;
+
+    public static Fitness reconstitute(
+            FitnessId id,
+            String name,
+            Address address,
+            FitnessOpeningHours openingHours,
+            int quality
+    ) {
+        return new Fitness(
+                id,
+                name,
+                address,
+                quality,
+                openingHours
+        );
+    }
 
     public void rename(String newName) {
         if (Objects.isNull(newName) || newName.isBlank()) {
@@ -34,16 +49,11 @@ public class Fitness {
     }
 
     public void increaseQuality() {
-        if (this.qualityIndex < properties.maxQuality()) {
-            throw new InvalidQualitySetting(this.id);
-        }
         this.qualityIndex++;
     }
 
     public void decreaseQuality() {
-        if (this.qualityIndex > properties.minQuality()) {
-            throw new InvalidQualitySetting(this.id);
-        }
+
         this.qualityIndex--;
     }
 }

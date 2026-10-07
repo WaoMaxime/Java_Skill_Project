@@ -8,15 +8,15 @@ import java.util.UUID;
 @ValueObject
 public record FitnessId(UUID id) {
 
-    public FitnessId(){
+    public FitnessId {
         Assert.notNull(id, "FitnessId must not be null");
-    }
-
-    public NotFoundException notFound() {
-        return new NotFoundException("FitnessId not found");
     }
 
     public static FitnessId create() {
         return new FitnessId(UUID.randomUUID());
+    }
+
+    public static FitnessId from(UUID value) {
+        return new FitnessId(value);
     }
 }

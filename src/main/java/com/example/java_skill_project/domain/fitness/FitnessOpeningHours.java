@@ -4,5 +4,8 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import java.time.LocalTime;
 
 @ValueObject
-public record FitnessOpeningHours(LocalTime openingTime, LocalTime closingTime) {
-}
+public record FitnessOpeningHours(
+        LocalTime openingTime,
+        LocalTime closingTime
+) {}
+g

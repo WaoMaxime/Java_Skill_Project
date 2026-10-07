@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.time.LocalTime;
 
 @ConfigurationProperties(prefix = "fitness")
-public record FitnessProperties(int maxQuality,
-                                int minQuality) {
-}
+public record FitnessProperties(
+        int maxQuality,
+        int minQuality
+) {}
