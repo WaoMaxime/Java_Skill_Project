@@ -13,7 +13,7 @@ Content-Type: application/json
     "city": "Antwerpen"
   },
   "qualityIndex": 3,
-  "fitnessOpeningHours": {
+  "openingHours": {
     "openingTime": "08:00:00",
     "closingTime": "22:00:00"
   }
