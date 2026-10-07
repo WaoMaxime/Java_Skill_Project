@@ -12,6 +12,10 @@ public record FitnessId(UUID id) {
         Assert.notNull(id, "FitnessId must not be null");
     }
 
+    public static FitnessId New() {
+        return new FitnessId(UUID.randomUUID());
+    }
+
     public static FitnessId from(UUID value) {
         return new FitnessId(value);
     }

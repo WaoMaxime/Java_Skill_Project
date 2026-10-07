@@ -26,6 +26,7 @@ public class FitnessService {
 
     public Fitness create(CreateFitnessRequest request) {
         Fitness fitness = Fitness.builder()
+                .id(FitnessId.New())
                 .name(request.name())
                 .address(request.address())
                 .fitnessOpeningHours(request.openingHours())
