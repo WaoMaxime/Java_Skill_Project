@@ -8,4 +8,3 @@ public record FitnessOpeningHours(
         LocalTime openingTime,
         LocalTime closingTime
 ) {}
-g

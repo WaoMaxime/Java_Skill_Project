@@ -1,6 +1,5 @@
 package com.example.java_skill_project.infrastructure.repository.fitness.entity;
 
-import com.example.java_skill_project.domain.fitness.FitnessOpeningHours;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

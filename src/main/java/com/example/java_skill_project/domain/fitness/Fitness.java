@@ -2,7 +2,6 @@ package com.example.java_skill_project.domain.fitness;
 
 import com.example.java_skill_project.domain.address.Address;
 import com.example.java_skill_project.domain.exception.InvalidFitnessNameException;
-import com.example.java_skill_project.domain.exception.InvalidQualitySetting;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
