@@ -8,6 +8,7 @@ import com.example.java_skill_project.infrastructure.repository.fitness.mapper.P
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -16,6 +17,14 @@ public class FitnessRepoImpl implements FitnessRepo {
 
     private final JpaFitnessRepository repository;
     private final PersistenceMapper mapper;
+
+    @Override
+    public List<Fitness> findAll() {
+        return repository.findAll()
+                .stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
 
     @Override
     public Optional<Fitness> findById(FitnessId id) {

@@ -1,6 +1,6 @@
 package com.example.java_skill_project.api.validation;
 
-import com.example.java_skill_project.domain.fitness.FitnessProperties;
+import com.example.java_skill_project.application.properties.FitnessProperties;
 import jakarta.validation.ConstraintValidator;
 import lombok.RequiredArgsConstructor;
 

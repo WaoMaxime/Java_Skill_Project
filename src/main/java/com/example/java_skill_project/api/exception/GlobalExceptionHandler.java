@@ -2,7 +2,7 @@ package com.example.java_skill_project.api.exception;
 
 import com.example.java_skill_project.application.exception.FitnessNotFoundException;
 import com.example.java_skill_project.domain.exception.InvalidFitnessNameException;
-import com.example.java_skill_project.domain.exception.InvalidQualitySetting;
+import com.example.java_skill_project.domain.exception.InvalidQualitySettingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,8 +21,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 
-    @ExceptionHandler(InvalidQualitySetting.class)
-    public ResponseEntity<String> handleException(InvalidQualitySetting e) {
+    @ExceptionHandler(InvalidQualitySettingException.class)
+    public ResponseEntity<String> handleException(InvalidQualitySettingException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }

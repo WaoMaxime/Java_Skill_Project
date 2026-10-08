@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -26,6 +27,16 @@ public class FitnessController {
     public ResponseEntity<FitnessResponse> getById(@PathVariable UUID id) {
         FitnessDto fitness = fitnessService.findFitnessById(id);
         return ResponseEntity.ok(mapper.toResponse(fitness));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<FitnessResponse>> getAll() {
+        List<FitnessResponse> fitnesses = fitnessService.findAll()
+                .stream()
+                .map(mapper::toResponse)
+                .toList();
+
+        return ResponseEntity.ok(fitnesses);
     }
 
     @PostMapping
