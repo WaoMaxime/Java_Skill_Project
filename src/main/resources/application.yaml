@@ -13,8 +13,9 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
 fitness:
-  max-quality: 5
-  min-quality: 0
+  quality:
+    min: 0
+    max: 5
 
 
 version: v1

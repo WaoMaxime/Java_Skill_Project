@@ -1,10 +1,10 @@
-package com.example.java_skill_project.domain.fitness;
+package com.example.java_skill_project.domain.shared;
 
 import org.jmolecules.ddd.annotation.ValueObject;
 import java.time.LocalTime;
 
 @ValueObject
-public record FitnessOpeningHours(
+public record OpeningHours(
         LocalTime openingTime,
         LocalTime closingTime
 ) {}

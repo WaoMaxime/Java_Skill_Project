@@ -1,8 +1,10 @@
 package com.example.java_skill_project.application.service;
 
-import com.example.java_skill_project.api.mapper.request.CreateFitnessRequest;
-import com.example.java_skill_project.api.mapper.request.FitnessRequest;
+import com.example.java_skill_project.application.dto.CreateFitnessDto;
+import com.example.java_skill_project.application.dto.FitnessDto;
+import com.example.java_skill_project.application.dto.UpdateFitnessDto;
 import com.example.java_skill_project.application.exception.FitnessNotFoundException;
+import com.example.java_skill_project.application.mapper.FitnessDtoMapper;
 import com.example.java_skill_project.domain.fitness.Fitness;
 import com.example.java_skill_project.domain.fitness.FitnessId;
 import com.example.java_skill_project.domain.fitness.FitnessProperties;
@@ -18,40 +20,44 @@ import java.util.UUID;
 public class FitnessService {
 
     private final FitnessRepo fitnessRepo;
+    private final FitnessDtoMapper mapper;
     private final FitnessProperties fitnessProperties;
 
-    public Fitness findFitnessById(UUID id) {
-        return fitnessRepo.findById(FitnessId.from(id)).orElseThrow(() -> new FitnessNotFoundException(FitnessId.from(id)));
+    public FitnessDto findFitnessById(UUID id) {
+        Fitness fitness = fitnessRepo.findById(FitnessId.from(id)).orElseThrow(() -> new FitnessNotFoundException(FitnessId.from(id)));
+        return mapper.toFitnessDto(fitness);
     }
 
-    public Fitness create(CreateFitnessRequest request) {
+    public FitnessDto create(CreateFitnessDto dto) {
         Fitness fitness = Fitness.builder()
                 .id(FitnessId.New())
-                .name(request.name())
-                .address(request.address())
-                .fitnessOpeningHours(request.openingHours())
-                .qualityIndex(request.qualityIndex())
+                .name(dto.name())
+                .address(dto.address())
+                .openingHours(dto.openingHours())
+                .qualityIndex(dto.qualityIndex())
                 .build();
 
-        return fitnessRepo.save(fitness);
+        fitnessRepo.save(fitness);
+
+        return mapper.toFitnessDto(fitness);
     }
 
-    public Fitness update(UUID id, FitnessRequest request) {
+    public FitnessDto update(UUID id, UpdateFitnessDto dto) {
         FitnessId fitnessId = FitnessId.from(id);
 
         Fitness fitness = fitnessRepo.findById(fitnessId)
                 .orElseThrow(() -> new FitnessNotFoundException(fitnessId));
 
-        if (Objects.nonNull(request.name()))  {
-            fitness.rename(request.name());
+        if (Objects.nonNull(dto.name()))  {
+            fitness.rename(dto.name());
         }
 
-        if (Objects.nonNull(request.address())) {
-            fitness.relocate(request.address());
+        if (Objects.nonNull(dto.address())) {
+            fitness.relocate(dto.address());
         }
 
-        if (Objects.nonNull(request.qualityIndex())) {
-            switch (request.qualityIndex()) {
+        if (Objects.nonNull(dto.qualityIndex())) {
+            switch (dto.qualityIndex()) {
                 case INCREASE -> {
                     if (fitness.getQualityIndex() < fitnessProperties.maxQuality()) {
                         fitness.increaseQuality();
@@ -66,7 +72,9 @@ public class FitnessService {
             }
         }
 
-        return fitnessRepo.save(fitness);
+        fitnessRepo.save(fitness);
+
+        return mapper.toFitnessDto(fitness);
     }
 
     public void delete(UUID id) {

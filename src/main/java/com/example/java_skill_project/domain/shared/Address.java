@@ -1,4 +1,4 @@
-package com.example.java_skill_project.domain.address;
+package com.example.java_skill_project.domain.shared;
 
 import org.jmolecules.ddd.annotation.ValueObject;
 

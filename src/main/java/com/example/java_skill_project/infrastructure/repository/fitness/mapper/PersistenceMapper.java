@@ -1,9 +1,9 @@
 package com.example.java_skill_project.infrastructure.repository.fitness.mapper;
 
-import com.example.java_skill_project.domain.address.Address;
+import com.example.java_skill_project.domain.shared.Address;
 import com.example.java_skill_project.domain.fitness.Fitness;
 import com.example.java_skill_project.domain.fitness.FitnessId;
-import com.example.java_skill_project.domain.fitness.FitnessOpeningHours;
+import com.example.java_skill_project.domain.shared.OpeningHours;
 import com.example.java_skill_project.infrastructure.repository.fitness.entity.AddressEmbeddable;
 import com.example.java_skill_project.infrastructure.repository.fitness.entity.FitnessEntity;
 import com.example.java_skill_project.infrastructure.repository.fitness.entity.OpeningsHoursEmbeddable;
@@ -20,7 +20,7 @@ public class PersistenceMapper {
                 fitness.getName(),
                 toEmbeddable(fitness.getAddress()),
                 fitness.getQualityIndex(),
-                toEmbeddable(fitness.getFitnessOpeningHours())
+                toEmbeddable(fitness.getOpeningHours())
         );
     }
 
@@ -60,7 +60,7 @@ public class PersistenceMapper {
         );
     }
 
-    private OpeningsHoursEmbeddable toEmbeddable(FitnessOpeningHours openingHours) {
+    private OpeningsHoursEmbeddable toEmbeddable(OpeningHours openingHours) {
         if (Objects.isNull(openingHours)) {
             return null;
         }
@@ -71,12 +71,12 @@ public class PersistenceMapper {
         );
     }
 
-    private FitnessOpeningHours toDomain(OpeningsHoursEmbeddable openingHours) {
+    private OpeningHours toDomain(OpeningsHoursEmbeddable openingHours) {
         if (Objects.isNull(openingHours)) {
             return null;
         }
 
-        return new FitnessOpeningHours(
+        return new OpeningHours(
                 openingHours.getOpeningTime(),
                 openingHours.getClosingTime()
         );

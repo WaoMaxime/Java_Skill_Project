@@ -1,7 +1,8 @@
 package com.example.java_skill_project.domain.fitness;
 
-import com.example.java_skill_project.domain.address.Address;
+import com.example.java_skill_project.domain.shared.Address;
 import com.example.java_skill_project.domain.exception.InvalidFitnessNameException;
+import com.example.java_skill_project.domain.shared.OpeningHours;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,13 +19,13 @@ public class Fitness {
     private String name;
     private Address address;
     private int qualityIndex;
-    private FitnessOpeningHours fitnessOpeningHours;
+    private OpeningHours openingHours;
 
     public static Fitness reconstitute(
             FitnessId id,
             String name,
             Address address,
-            FitnessOpeningHours openingHours,
+            OpeningHours openingHours,
             int quality
     ) {
         return new Fitness(
